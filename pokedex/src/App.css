@@ -1,42 +1,148 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
+
+:root {
+  --bg-dark: #05050a;
+  --glass: rgba(255, 255, 255, 0.08);
+  --neon-blue: #00f6ff;
+  --neon-purple: #b700ff;
+  --text-main: #eaeaea;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ===== BODY ===== */
+body {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background:
+    radial-gradient(circle at top, #0d1b2a, #000);
+  color: var(--text-main);
+}
+
+/* ===== APP ===== */
+.App {
   text-align: center;
+  min-height: 100vh;
+  padding: 40px 20px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* ===== TITULO ===== */
+h1 {
+  font-size: 3rem;
+  letter-spacing: 4px;
+  margin-bottom: 50px;
+  background: linear-gradient(
+    90deg,
+    var(--neon-blue),
+    var(--neon-purple)
+  );
+  -webkit-text-fill-color: transparent;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* ===== GRID ===== */
+.pokemon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 35px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
+/* ===== CARD ===== */
 .card {
-  padding: 2em;
+  background: linear-gradient(
+    145deg,
+    rgba(255,255,255,0.12),
+    rgba(255,255,255,0.02)
+  );
+  backdrop-filter: blur(14px);
+  border-radius: 20px;
+  padding: 25px;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow:
+    0 0 25px rgba(0,246,255,0.15),
+    inset 0 0 15px rgba(183,0,255,0.1);
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-.read-the-docs {
-  color: #888;
+/* EFECTO NEON */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(0,246,255,0.35),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card:hover {
+  transform: translateY(-12px) scale(1.04);
+  box-shadow:
+    0 0 45px rgba(0,246,255,0.45),
+    0 0 60px rgba(183,0,255,0.25);
+}
+
+/* ===== IMAGEN ===== */
+.card img {
+  width: 140px;
+  height: 140px;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 0 15px var(--neon-blue));
+  transition: transform 0.4s ease;
+}
+
+.card:hover img {
+  transform: scale(1.15) rotate(-4deg);
+}
+
+/* ===== TEXTO ===== */
+.card h3 {
+  text-transform: uppercase;
+  margin: 15px 0 10px;
+  letter-spacing: 2px;
+  color: var(--neon-blue);
+}
+
+.card p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+/* ===== LOADING ===== */
+p {
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.4; }
+  50% { opacity: 1; }
+  100% { opacity: 0.4; }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  .card img {
+    width: 120px;
+    height: 120px;
+  }
 }
