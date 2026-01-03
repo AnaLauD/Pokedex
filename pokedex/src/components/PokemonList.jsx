@@ -8,7 +8,7 @@ function PokemonList() {
 
     useEffect(() => {
         const fetchPokemons = async () => {
-            const data = await getPokemons(100);
+            const data = await getPokemons(12);
 
             const detailedData = await Promise.all(
                 data.results.map(async (pokemon) => {
