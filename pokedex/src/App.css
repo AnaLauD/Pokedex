@@ -146,3 +146,26 @@ p {
     height: 120px;
   }
 }
+
+.card {
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  background-color: var(--hover-color);
+  color: white;
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+}
+
+.type {
+  display: inline-block;
+  margin: 4px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+}
