@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
 import { getPokemons } from './services/PokeApi';
-import { PokemonList } from './components/PokemonList'
+import  PokemonList  from './components/PokemonList'
 import './App.css'
 
 
 function App() {
-    const [pokemons, setPokemons] = UseState ([]);
-    const [loading, setLoading] = UseState (true);
+    const [pokemons, setPokemons] = useState([]);
+    const [loading, setLoading] = useState(true);
 
 useEffect(() => { 
 
